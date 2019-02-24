@@ -38,6 +38,10 @@ spec:
     {{- else }}
       emptyDir: {}
     {{- end }}
+
+    - name: {{ template "zalenium.fullname" . }}-shared
+      hostPath:
+        path: /Users/prashanthrajjapa/Downloads/images/
   containers:
     - name: {{ .Chart.Name }}
       image: "{{ .Values.hub.image }}:{{ .Values.hub.tag }}"
@@ -153,6 +157,8 @@ spec:
           mountPath: /home/seluser/videos
         - name: {{ template "zalenium.fullname" . }}-data
           mountPath: /tmp/mounted
+        - name: {{ template "zalenium.fullname" . }}-shared
+          mountPath: /home/seluser/propertyfinder
   serviceAccountName: {{ template "zalenium.serviceAccountName" . }}
   {{- if .Values.nodeSelector.enabled }}
   nodeSelector:

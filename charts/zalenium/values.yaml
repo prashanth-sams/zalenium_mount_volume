@@ -20,7 +20,7 @@ hub:
 
   ## Timeout for probe Hub liveness via HTTP request on Hub console
   livenessTimeout: 1
-  
+
   ## Timeout for probe Hub readiness via HTTP request on Hub console
   readinessTimeout: 1
 
@@ -92,7 +92,7 @@ hub:
   testingBotSecret: blank
 
   ## Arbitrary environment variables
-  env: 
+  env:
     # FOO: BAR
 
   ## Use Openshift DeploymentConfig instead of Kubernetes Deployment
@@ -137,6 +137,12 @@ persistence:
     # storageClass: "-"
     accessMode: ReadWriteMany
     size: 10Gi
+  shared:
+    enabled: false
+    useExisting: false
+    name: zale_shared
+    accessMode: ReadWriteMany
+    size: 2Gi
 
 ingress:
   enabled: false
